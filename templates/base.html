@@ -1,0 +1,16 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Home{% endblock title %} | Learn Active</title>
+    <link rel="shortcut icon" href="{% static 'images/logo-square.png' %}" type="image/x-icon" />
+    {% block head %}{% endblock head %}
+</head>
+<body style="{% block style %}{% endblock style %}">
+    {% block body %}{% endblock body %}
+</body>
+{% block js %}{% endblock js %}
+</html>

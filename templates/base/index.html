@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock head %}
+{% block body %}
+    <header>
+        <a href="{% url 'base' %}">
+            <img src="{% static 'images/logo.png' %}" alt="logo" class="logo">
+        </a>
+        <nav>
+            <ul class="nav__links">
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="{% url 'base' %}">Support</a></li>
+            </ul>
+        </nav>
+        <div class="buttons">
+            {% if user.is_authenticated %}
+                <button class="btn"><a href="{% url 'room' %}" class="a-link">Lobby</a></button>
+                <button class="btn"><a href="{% url 'signout' %}" class="a-link">Logout</a></button>
+            {% else %}
+                <button class="btn"><a href="{% url 'signin' %}" class="a-link">Login</a></button>
+                <button class="btn"><a href="{% url 'signup' %}" class="a-link">Sign Up</a></button>
+            {% endif %}
+        </div>
+    </header>
+    <main>
+        <div class="hero-content">
+            <div class="hero-image">
+                <img src="{% static 'images/background.jpg' %}" alt="hero-image" class="hero-img">
+            </div>
+            <div class="hero-title">
+                <h1 class="hero-heading">Online Learning Made Fun</h1>
+                <p class="hero-para">
+                    Learn with Peers Online, the same as in class with fast video
+                    conferencing tools
+                </p>
+                {% if not user.is_authenticated %}
+                    <div class="hero-buttons">
+                        <button class="hero-btn"><a href="{% url 'signin' %}" class="a-link">Login</a></button>
+                        <button class="hero-btn"><a href="{% url 'signup' %}" class="a-link">Sign Up</a></button>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="use">
+            <div class="use-text" id="about">
+                <h1 class="use-heading">Learn Active</h1>
+                <p class="use-content">
+                    Learn Active offers high-quality audio and video streaming,
+                    making it easy to feel like you're sitting in the classroom even
+                    though you are at the comfort of your home.
+                </p>
+            </div>
+            <div class="use-image">
+                <img src="{% static 'images/background.jpg' %}" alt="use-image" class="use-img">
+            </div>
+        </div>
+        <div class="features" id="services">
+            <h1 class="features-heading">Features</h1>
+        </div>
+        <div class="card-container">
+            <div class="features-cards">
+                <div class="feature-1">
+                    <div class="card">
+                        <img class="card-img" src="{% static 'images/background.jpg' %}" alt="image">
+                        <div class="card-content">
+                            <h1 class="card-header">Low Bandwidth</h1>
+                            <p class="card-text">
+                                Slow Connection? No Problem! Attend classes even on
+                                slow internet speeds.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-2">
+                    <div class="card">
+                        <img class="card-img" src="{% static 'images/background.jpg' %}" alt="image">
+                        <div class="card-content">
+                            <h1 class="card-header">Screen Sharing</h1>
+                            <p class="card-text">
+                                What's on your Screen? Share your Screen Seamlessly.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-3">
+                    <div class="card">
+                        <img class="card-img" src="{% static 'images/background.jpg' %}" alt="image">
+                        <div class="card-content">
+                            <h1 class="card-header">Easy Quizzes</h1>
+                            <p class="card-text">
+                                Conduct Quizzes and Questionnaires Easily.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <img src="{% static 'images/logo.png' %}" alt="logo" class="bottom-logo">
+            <p class="message">&#169; Learn Active 2022-2023</p>
+        </div>
+    </footer>
+{% endblock body %}
